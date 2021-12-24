@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import clases.ControladorArchivos;
 import java.util.Collections;
 import java.util.Random;
+import javax.swing.DefaultListModel;
 
 public class Juego extends javax.swing.JFrame {
 
@@ -12,14 +13,19 @@ public class Juego extends javax.swing.JFrame {
     ControladorArchivos archivos = new ControladorArchivos();
     ArrayList<String> respuestas = archivos.Repuestas();
     ArrayList<String> preguntas = archivos.Preguntas();
+    ArrayList<String> jugador = archivos.Preguntas();
+    ArrayList<String> listaJugadores = new ArrayList<>();
+    DefaultListModel modelo = new DefaultListModel();
     String[][] baseDePreguntas = new String [5][5];
     String correcta;
     ArrayList<String> opciones = new ArrayList<>();
     Random random = new Random();
     int Puntos = 0;
+    
     public Juego() {
         initComponents();
         Jugando();
+        jList1.setModel(modelo);
     }
     
     public void Jugando(){
@@ -99,6 +105,7 @@ public class Juego extends javax.swing.JFrame {
         }
     
     }  
+    
     public void LlenarPregunta (int npreg){
         String [] pre = preguntas.get(npreg).split(",");
         jLabelPregunta.setText(pre[1]);
@@ -215,6 +222,27 @@ public class Juego extends javax.swing.JFrame {
         }
     }
     
+    public void listarJugadores(){
+        String dato = jButtonAceptar.getText();
+        listaJugadores.add(dato+" -> "+ Integer.toString(Puntos));
+    }
+    
+    public void AgregarJugador(ArrayList<String> jugador){
+        archivos.AddJugadores(jugador);
+    } 
+    
+    public void MostrarJugadores(){
+        ArrayList<String> jugadores = archivos.Jugadores();
+        modelo.removeAllElements();
+        for(String item:jugadores){
+            modelo.addElement(item);
+        }
+    }
+    
+    public void AbrirHistorial(){
+        
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -224,7 +252,15 @@ public class Juego extends javax.swing.JFrame {
         jLabelFelicitacion = new javax.swing.JLabel();
         Continuar = new javax.swing.JButton();
         jLabelTotalesPuntos = new javax.swing.JLabel();
-        Grupo1 = new javax.swing.ButtonGroup();
+        jFrameHistorico = new javax.swing.JFrame();
+        jPanel3 = new javax.swing.JPanel();
+        jButtonAceptar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jButtonMostar = new javax.swing.JButton();
+        jTextJugador = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonCerrar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabelRonda = new javax.swing.JLabel();
         jLabelPregunta = new javax.swing.JLabel();
@@ -309,6 +345,95 @@ public class Juego extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jFrameHistorico.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Ando Preguntando"));
+
+        jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarActionPerformed(evt);
+            }
+        });
+
+        jList1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jScrollPane1.setViewportView(jList1);
+
+        jButtonMostar.setText("Mostrar");
+        jButtonMostar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMostarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Escribir el nombre del Jugador");
+
+        jButtonCerrar.setText("Cerrar");
+        jButtonCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCerrarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(137, 137, 137)
+                                    .addComponent(jButtonMostar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextJugador))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(jButtonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jTextJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAceptar)
+                    .addComponent(jButtonMostar))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jButtonCerrar)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jFrameHistoricoLayout = new javax.swing.GroupLayout(jFrameHistorico.getContentPane());
+        jFrameHistorico.getContentPane().setLayout(jFrameHistoricoLayout);
+        jFrameHistoricoLayout.setHorizontalGroup(
+            jFrameHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameHistoricoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jFrameHistoricoLayout.setVerticalGroup(
+            jFrameHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameHistoricoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ando Preguntando"));
@@ -321,23 +446,18 @@ public class Juego extends javax.swing.JFrame {
         jLabelPregunta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPregunta.setText("Pregunta 1");
 
-        Grupo1.add(opcion1);
-
-        Grupo1.add(opcion2);
         opcion2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcion2ActionPerformed(evt);
             }
         });
 
-        Grupo1.add(opcion4);
         opcion4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcion4ActionPerformed(evt);
             }
         });
 
-        Grupo1.add(opcion3);
         opcion3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcion3ActionPerformed(evt);
@@ -471,42 +591,61 @@ public class Juego extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void opcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion4ActionPerformed
-       
-    }//GEN-LAST:event_opcion4ActionPerformed
-
-    private void terminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarActionPerformed
-        Terminar();
-    }//GEN-LAST:event_terminarActionPerformed
-
-    private void validarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validarActionPerformed
-        
-        BaseDePreguntas ();
-        EscogerRespuesta(); 
-        DevuelvePregunta(nronda);
-        nronda++;
-        Finalizar();
-    }//GEN-LAST:event_validarActionPerformed
-
-    private void opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion2ActionPerformed
-       
-    }//GEN-LAST:event_opcion2ActionPerformed
-
-    private void opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion3ActionPerformed
-        
-    }//GEN-LAST:event_opcion3ActionPerformed
-
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
         EnviarPrincipal();
         jDialog1.dispose();
     }//GEN-LAST:event_ContinuarActionPerformed
 
+    private void validarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validarActionPerformed
+
+        BaseDePreguntas ();
+        EscogerRespuesta();
+        DevuelvePregunta(nronda);
+        nronda++;
+        Finalizar();
+    }//GEN-LAST:event_validarActionPerformed
+
+    private void terminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarActionPerformed
+        Terminar();
+    }//GEN-LAST:event_terminarActionPerformed
+
+    private void opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion3ActionPerformed
+
+    }//GEN-LAST:event_opcion3ActionPerformed
+
+    private void opcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion4ActionPerformed
+
+    }//GEN-LAST:event_opcion4ActionPerformed
+
+    private void opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion2ActionPerformed
+
+    }//GEN-LAST:event_opcion2ActionPerformed
+
+    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCerrarActionPerformed
+
+    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
+        listarJugadores();
+        AgregarJugador(listaJugadores);
+        jTextJugador.removeAll();
+        jTextJugador.setEnabled(false);
+    }//GEN-LAST:event_jButtonAceptarActionPerformed
+
+    private void jButtonMostarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostarActionPerformed
+        MostrarJugadores();
+    }//GEN-LAST:event_jButtonMostarActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Continuar;
-    private javax.swing.ButtonGroup Grupo1;
+    private javax.swing.JButton jButtonAceptar;
+    private javax.swing.JButton jButtonCerrar;
+    private javax.swing.JButton jButtonMostar;
     private javax.swing.JDialog jDialog1;
+    private javax.swing.JFrame jFrameHistorico;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelFelicitacion;
     private javax.swing.JLabel jLabelPregunta;
     private javax.swing.JLabel jLabelPuntuacion;
@@ -516,8 +655,12 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelRespuesta4;
     private javax.swing.JLabel jLabelRonda;
     private javax.swing.JLabel jLabelTotalesPuntos;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextJugador;
     private javax.swing.JRadioButton opcion1;
     private javax.swing.JRadioButton opcion2;
     private javax.swing.JRadioButton opcion3;

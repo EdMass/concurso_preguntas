@@ -15,6 +15,13 @@ public class Principal extends javax.swing.JFrame {
         this.setVisible(false);
     }
     
+    public void JPanelJugar(){
+        jDialogJuego.setVisible(true);
+        jDialogJuego.setSize(543, 433);
+        jDialogJuego.setLocation(420,150);
+        this.setVisible(false);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -26,9 +33,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jDialogJuego = new javax.swing.JDialog();
-        jPanel3 = new javax.swing.JPanel();
-        jLabelJuego = new javax.swing.JLabel();
-        Continuar1 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabelCreacion2 = new javax.swing.JLabel();
+        Continuar3 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         Jugar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -52,7 +61,7 @@ public class Principal extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("Para crear un set de juego debes:\n\n1)Escribir la pegunta que deseas hacer en primer espacio en Blanco.\n\n2)Escribir la respuesta a la pregunta y seleccionarla.\n\n3)Escribir las demas opciones.\n\n4) Evita dejar espacios en blanco o la respuesta sin marcar.");
+        jTextArea1.setText("Para crear un set de juego debes:\n\n1)Escribir la pegunta que deseas hacer en primer espacio en Blanco.\n\n2)Escribir la respuesta a la pregunta y seleccionarla.\n\n3)Escribir las demás opciones.\n\n4) Evita dejar espacios en blanco o la respuesta sin marcar.");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -101,37 +110,55 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Ando Preguntando"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Ando Preguntando"));
 
-        jLabelJuego.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabelJuego.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelJuego.setText("Instrucciones de Juego");
-        jLabelJuego.setToolTipText("");
+        jLabelCreacion2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelCreacion2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelCreacion2.setText("Instrucciones de Juego");
+        jLabelCreacion2.setToolTipText("");
 
-        Continuar1.setText("Continuar");
+        Continuar3.setText("Continuar");
+        Continuar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Continuar3ActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jLabelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(Continuar1)))
-                .addContainerGap(138, Short.MAX_VALUE))
+        jTextArea3.setEditable(false);
+        jTextArea3.setColumns(20);
+        jTextArea3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextArea3.setRows(5);
+        jTextArea3.setText("Para empezar a jugar se debe:\n\n1)Leer atentamente el enunciado.\n\n2)Seleccionar la respuesta adecuada\n\n3)Oprimir el botón verificar pregunta.\n\n4) De ser correcta la pregunta se avanzará de ronda, y se otorgaran \npuntos, estos aumentaran en cada ronda, al igual que la dificultad.\n\n5)De equivocarse en la respuesta, la partida volverá a empezar.\n");
+        jScrollPane3.setViewportView(jTextArea3);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(jLabelCreacion2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Continuar3)
+                .addGap(194, 194, 194))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabelJuego)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
-                .addComponent(Continuar1)
-                .addGap(49, 49, 49))
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelCreacion2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Continuar3)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jDialogJuegoLayout = new javax.swing.GroupLayout(jDialogJuego.getContentPane());
@@ -140,14 +167,14 @@ public class Principal extends javax.swing.JFrame {
             jDialogJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialogJuegoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jDialogJuegoLayout.setVerticalGroup(
             jDialogJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogJuegoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogJuegoLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -224,9 +251,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarActionPerformed
-        Juego abrir = new Juego();
-        abrir.setVisible(true);
-        this.setVisible(false);
+        JPanelJugar();
     }//GEN-LAST:event_JugarActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
@@ -238,6 +263,12 @@ public class Principal extends javax.swing.JFrame {
         abrir.setVisible(true);
         jDialogCreacion.dispose();
     }//GEN-LAST:event_ContinuarActionPerformed
+
+    private void Continuar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Continuar3ActionPerformed
+        Juego abrir = new Juego();
+        abrir.setVisible(true);
+        jDialogJuego.dispose();
+    }//GEN-LAST:event_Continuar3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,18 +309,25 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Continuar;
-    private javax.swing.JButton Continuar1;
+    private javax.swing.JButton Continuar2;
+    private javax.swing.JButton Continuar3;
     private javax.swing.JButton Crear;
     private javax.swing.JButton Jugar;
     private javax.swing.JDialog jDialogCreacion;
     private javax.swing.JDialog jDialogJuego;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCreacion;
-    private javax.swing.JLabel jLabelJuego;
+    private javax.swing.JLabel jLabelCreacion1;
+    private javax.swing.JLabel jLabelCreacion2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
     // End of variables declaration//GEN-END:variables
 }

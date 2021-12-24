@@ -14,6 +14,7 @@ public class ControladorArchivos {
     
     ArrayList<String> preguntas;
     ArrayList<String> repuestas;
+    ArrayList<String> jugadores;
     String usuario = System.getProperty("user.name");
     String carpeta = "C:\\Users\\"+usuario+"\\Documents\\AndoPreguntando\\";
     
@@ -150,4 +151,59 @@ public class ControladorArchivos {
 
     }
     
+    public ArrayList<String> Jugadores(){
+        try{
+            CreateCarpeta();
+            File archivo = new File(carpeta+"Jugadores.txt");
+            
+            if(archivo.exists()){
+            } else {
+                archivo.createNewFile();
+            }
+
+            BufferedReader br = new BufferedReader(new FileReader(archivo));                         
+            String linea;
+            jugadores = new ArrayList<>();
+            int i = 1;
+            while((linea = br.readLine())!= null){
+                jugadores.add(linea);
+                i++;
+            }
+            
+            br.close(); 
+            
+            return jugadores;
+            
+        }catch(IOException ex){
+            
+        }
+        
+        return jugadores;
+    }
+    
+    public void AddJugadores(ArrayList<String> jugadores){
+
+        try{
+            CreateCarpeta();
+            File archivo = new File(carpeta+"Jugadores.txt");
+            
+            if(archivo.exists()){
+            } else {
+                archivo.createNewFile();
+            }
+            
+            BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+            
+            for(int i=0; i<jugadores.size(); i++){ 
+                String prs = jugadores.get(i);
+                bw.write(prs);
+                bw.newLine();
+                bw.flush();
+            }
+            bw.close();
+        }catch(IOException ex){
+            
+        }
+
+    }
 }
