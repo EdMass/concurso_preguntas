@@ -223,7 +223,7 @@ public class Juego extends javax.swing.JFrame {
     }
     
     public void listarJugadores(){
-        String dato = jButtonAceptar.getText();
+        String dato = jTextJugador.getText();
         listaJugadores.add(dato+" -> "+ Integer.toString(Puntos));
     }
     
@@ -240,7 +240,9 @@ public class Juego extends javax.swing.JFrame {
     }
     
     public void AbrirHistorial(){
-        
+        jFrameHistorico.setVisible(true);
+        jFrameHistorico.setSize(543, 453);
+        jFrameHistorico.setLocation(420,100);
     }
     
     @SuppressWarnings("unchecked")
@@ -261,6 +263,7 @@ public class Juego extends javax.swing.JFrame {
         jTextJugador = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButtonCerrar = new javax.swing.JButton();
+        Grupo1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabelRonda = new javax.swing.JLabel();
         jLabelPregunta = new javax.swing.JLabel();
@@ -405,14 +408,14 @@ public class Juego extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jTextJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jTextJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAceptar)
                     .addComponent(jButtonMostar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonCerrar)
                 .addContainerGap())
         );
@@ -446,23 +449,13 @@ public class Juego extends javax.swing.JFrame {
         jLabelPregunta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPregunta.setText("Pregunta 1");
 
-        opcion2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcion2ActionPerformed(evt);
-            }
-        });
+        Grupo1.add(opcion1);
 
-        opcion4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcion4ActionPerformed(evt);
-            }
-        });
+        Grupo1.add(opcion2);
 
-        opcion3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcion3ActionPerformed(evt);
-            }
-        });
+        Grupo1.add(opcion4);
+
+        Grupo1.add(opcion3);
 
         terminar.setText("Terminar intento");
         terminar.addActionListener(new java.awt.event.ActionListener() {
@@ -592,7 +585,7 @@ public class Juego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
-        EnviarPrincipal();
+        AbrirHistorial();
         jDialog1.dispose();
     }//GEN-LAST:event_ContinuarActionPerformed
 
@@ -609,27 +602,17 @@ public class Juego extends javax.swing.JFrame {
         Terminar();
     }//GEN-LAST:event_terminarActionPerformed
 
-    private void opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion3ActionPerformed
-
-    }//GEN-LAST:event_opcion3ActionPerformed
-
-    private void opcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion4ActionPerformed
-
-    }//GEN-LAST:event_opcion4ActionPerformed
-
-    private void opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion2ActionPerformed
-
-    }//GEN-LAST:event_opcion2ActionPerformed
-
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
-        // TODO add your handling code here:
+        EnviarPrincipal();
+        jFrameHistorico.dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         listarJugadores();
         AgregarJugador(listaJugadores);
         jTextJugador.removeAll();
-        jTextJugador.setEnabled(false);
+        jButtonAceptar.setEnabled(false);
+        jTextJugador.setEditable(false);
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     private void jButtonMostarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostarActionPerformed
@@ -640,6 +623,7 @@ public class Juego extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Continuar;
+    private javax.swing.ButtonGroup Grupo1;
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonCerrar;
     private javax.swing.JButton jButtonMostar;

@@ -192,15 +192,29 @@ public class ControladorArchivos {
                 archivo.createNewFile();
             }
             
-            BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
-            
-            for(int i=0; i<jugadores.size(); i++){ 
-                String prs = jugadores.get(i);
-                bw.write(prs);
-                bw.newLine();
-                bw.flush();
+            BufferedReader br = new BufferedReader(new FileReader(archivo));                         
+            String linea;
+            int j = 1;
+            while((linea = br.readLine())!= null){
+                jugadores.add(linea);
+                j++;
             }
-            bw.close();
+            
+            
+                BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+            
+                for(int i=j; i<jugadores.size()+j; i++){ 
+                    String prs = jugadores.get(i-j);
+                    bw.write(prs);
+                    bw.newLine();
+                    bw.flush();
+                }
+                bw.close();
+            
+            
+            br.close();            
+            
+            
         }catch(IOException ex){
             
         }
