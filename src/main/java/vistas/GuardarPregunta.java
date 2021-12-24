@@ -63,29 +63,35 @@ public class GuardarPregunta extends javax.swing.JFrame {
     }
     
     public void reiniciarGuardar(){
-       if(nronda!=6){
-        jTextPregunta.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        Grupo1.clearSelection();
-        npregunta++;
+        System.out.println(npregunta+ "pre");
+        System.out.println(nronda);
+        if(nronda < 6 ){
+            jTextPregunta.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            Grupo1.clearSelection();
+            npregunta++;
                 
-        if(npregunta == 6 || npregunta == 11|| npregunta ==16 || npregunta ==21){
-            nronda++;
-            JOptionPane.showMessageDialog(null, "Primera pregunta de la ronda "
-                    +Integer.toString(nronda));
-        }
-        jLabelRondaPregunta.setText("Ronda "+Integer.toString(nronda)+
-                     " Pregunta "+Integer.toString(npregunta));     
+            if(npregunta == 6 ){
+                nronda++;
+                
+                if(nronda == 6){
+                   JOptionPane.showMessageDialog(null, "Se han completado las preguntas");
+
+                   Principal abrir = new Principal();
+                    abrir.setVisible(true);
+                    this.dispose();
+                    return;
+                }
+                JOptionPane.showMessageDialog(null, "Primera pregunta de la ronda "
+                        +Integer.toString(nronda));
+                npregunta =1;
+            }
+            jLabelRondaPregunta.setText("Ronda "+Integer.toString(nronda)+
+                         " Pregunta "+Integer.toString(npregunta));     
         
-       }else if(nronda == 6){
-           JOptionPane.showMessageDialog(null, "Se han completado las preguntas");
-           
-           Principal abrir = new Principal();
-            abrir.setVisible(true);
-            this.setVisible(false);
        }
     }
     
